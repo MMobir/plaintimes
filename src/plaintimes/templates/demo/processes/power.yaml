@@ -1,0 +1,66 @@
+processes:
+  COAL_PP:
+    description: Coal steam plant
+    tags: [power, fossil]
+    inputs: [COAL]
+    outputs: [ELC]
+    efficiency: 0.38
+    lifetime: 40
+    invcost: 2200             # MUSD per GW
+    fixom: 45                 # MUSD per GW per year
+    varom: 1.2                # MUSD per PJ generated
+    availability: 0.85
+    existing: {1992: 2.0, 2008: 1.5}   # GW by commissioning year
+    emissions: combustion
+
+  GAS_CC:
+    description: Combined-cycle gas turbine
+    tags: [power, fossil]
+    inputs: [GAS]
+    outputs: [ELC]
+    efficiency: {2025: 0.56, 2050: 0.61}
+    vintaged: true            # each vintage keeps the efficiency of the year it was built
+    lifetime: 30
+    invcost: {2025: 1000, 2050: 900}
+    fixom: 22
+    varom: 0.6
+    availability: 0.90
+    existing: {2012: 1.5}
+    emissions: combustion
+
+  HYDRO:
+    description: Existing reservoir hydro (no new sites)
+    tags: [power, renewable]
+    outputs: [ELC]
+    lifetime: 80
+    fixom: 30
+    existing: {1985: 1.2}
+    capacity_factor: 0.42     # water available over the year
+    # no `invcost`, so the model cannot build more
+
+  WIND:
+    description: Onshore wind
+    tags: [power, renewable]
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 1500, 2040: 1150, 2050: 1050}
+    fixom: 38
+    availability: {WD: 0.36, WN: 0.40, SD: 0.22, SN: 0.26}
+    peak_contribution: 0.15
+    bounds:
+      capacity: {max: {2030: 6, 2050: 20}}     # siting limit, GW
+
+  SOLAR:
+    description: Utility-scale photovoltaics
+    tags: [power, renewable]
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 850, 2040: 550, 2050: 480}
+    fixom: 14
+    availability: {WD: 0.16, WN: 0.0, SD: 0.38, SN: 0.0}
+    peak_contribution: 0.05
+
+  ELC_GRID:
+    description: Delivery of electricity to end users
+    inputs: [ELC]
+    outputs: [POWER]

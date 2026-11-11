@@ -1,0 +1,22 @@
+processes:
+  GAS_BOILER:
+    description: Gas boilers
+    tags: [heat, fossil]
+    inputs: [GAS]
+    outputs: [HEAT]
+    efficiency: {2025: 0.88, 2050: 0.94}
+    lifetime: 20
+    invcost: 160              # MUSD per GW thermal
+    fixom: 4
+    residual: {2025: 9.0, 2035: 3.0, 2040: 0}   # surviving old stock, GW
+    emissions: combustion
+
+  HEAT_PUMP:
+    description: Electric heat pumps (seasonal COP 3)
+    tags: [heat]
+    inputs: {ELC: 0.333, AMBIENT: 0.667}
+    outputs: [HEAT]
+    timeslice: season         # runs flat within a season
+    lifetime: 18
+    invcost: {2025: 900, 2050: 650}
+    fixom: 12

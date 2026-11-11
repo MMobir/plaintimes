@@ -1,0 +1,23 @@
+
+plaintimes: 1
+name: mb2
+currency: MUSD
+discount_rate: 0.05
+regions: [R1]
+periods: {start: 2025, lengths: [5, 10, 10]}
+units: {energy: PJ, capacity: GW}
+
+commodities:
+  GAS: {kind: energy, unit: PJ}
+  ELC: {kind: demand, unit: PJ, demand: {2025: 100, 2050: 160}}
+processes:
+  GAS_IMP: {outputs: [GAS], varom: {2025: 4, 2050: 6}}
+
+  GAS_PP:
+    inputs: [GAS]
+    outputs: [ELC]
+    efficiency: 0.5
+    lifetime: 15
+    invcost: 1000
+    fixom: 20
+    availability: 0.9

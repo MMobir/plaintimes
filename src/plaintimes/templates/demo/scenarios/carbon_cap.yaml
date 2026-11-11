@@ -1,0 +1,4 @@
+description: Declining cap on annual CO2 emissions.
+commodities:
+  CO2:
+    cap: {2030: 60000, 2040: 30000, 2050: 6000}     # kt per year

@@ -1,0 +1,18 @@
+processes:
+  # Supply processes have no inputs; `varom` is the price paid per PJ.
+  COAL_IMP:
+    description: Coal imports
+    outputs: [COAL]
+    varom: {2025: 3.0, 2050: 3.4}
+    sources: {varom: "illustrative"}
+  GAS_IMP:
+    description: Gas imports
+    outputs: [GAS]
+    varom: {2025: 7.0, 2050: 9.0}
+  OIL_IMP:
+    description: Oil product imports
+    outputs: [OIL]
+    varom: {2025: 13.0, 2050: 15.0}
+  AMBIENT_HEAT:
+    description: Ambient heat source for heat pumps
+    outputs: [AMBIENT]

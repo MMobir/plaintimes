@@ -1,0 +1,42 @@
+commodities:
+  # --- primary fuels (annual balances) -------------------------------------
+  COAL: {kind: energy, description: Hard coal}
+  GAS:  {kind: energy, description: Natural gas}
+  OIL:  {kind: energy, description: Oil products}
+  AMBIENT: {kind: energy, description: Ambient heat drawn by heat pumps (free)}
+
+  # --- electricity: balanced in every timeslice ------------------------------
+  ELC:
+    kind: energy
+    description: Electricity at the plant gate
+    timeslice: daynite
+    efficiency: 0.94        # 6% grid losses between plants and consumers
+    peak_reserve: 0.15      # firm capacity must exceed load by 15% in every timeslice
+
+  # --- energy services the model must deliver --------------------------------
+  POWER:
+    kind: demand
+    description: Electricity for appliances, lighting and industry
+    timeslice: daynite
+    demand: {2025: 200, 2050: 290}
+    load_shape: {WD: 0.30, WN: 0.22, SD: 0.28, SN: 0.20}
+  HEAT:
+    kind: demand
+    description: Space and water heat
+    timeslice: season
+    demand: {2025: 150, 2050: 135}
+    load_shape: {W: 0.78, S: 0.22}
+  MOBILITY:
+    kind: demand
+    description: Car travel
+    unit: Bvkm              # billion vehicle-km per year
+    demand: {2025: 60, 2050: 78}
+
+  # --- emissions -----------------------------------------------------------------
+  CO2: {kind: emission, unit: kt, description: Energy-related CO2}
+
+# Emissions per PJ of fuel burnt; applied to processes with `emissions: combustion`.
+emission_factors:
+  COAL: {CO2: 94.6}
+  GAS:  {CO2: 56.1}
+  OIL:  {CO2: 73.3}

@@ -1,0 +1,426 @@
+{
+ "af1": {
+  "model": "af1.yaml",
+  "objective": 22975.6399786207,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "bd1": {
+  "model": "bd1.yaml",
+  "objective": 23790.0176153204,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "cs1": {
+  "model": "cs1.yaml",
+  "objective": 36483.2096128271,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "demo": {
+  "model": "demo",
+  "objective": 344362.535119409,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "demo+carbon_cap": {
+  "model": "demo",
+  "objective": 348135.558088009,
+  "qa_passed": true,
+  "scenarios": [
+   "carbon_cap"
+  ],
+  "times_version": "4.9.8"
+ },
+ "demo+carbon_cap+high_gas": {
+  "model": "demo",
+  "objective": 355748.860359197,
+  "qa_passed": true,
+  "scenarios": [
+   "carbon_cap",
+   "high_gas"
+  ],
+  "times_version": "4.9.8"
+ },
+ "demo+carbon_tax": {
+  "model": "demo",
+  "objective": 370385.082958046,
+  "qa_passed": true,
+  "scenarios": [
+   "carbon_tax"
+  ],
+  "times_version": "4.9.8"
+ },
+ "demo+high_gas": {
+  "model": "demo",
+  "objective": 349292.999011174,
+  "qa_passed": true,
+  "scenarios": [
+   "high_gas"
+  ],
+  "times_version": "4.9.8"
+ },
+ "demo+renewables_target": {
+  "model": "demo",
+  "objective": 344717.734731337,
+  "qa_passed": true,
+  "scenarios": [
+   "renewables_target"
+  ],
+  "times_version": "4.9.8"
+ },
+ "dy1": {
+  "model": "dy1.yaml",
+  "objective": 30694.4301717792,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "em1": {
+  "model": "em1.yaml",
+  "objective": 23855.1680285011,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "em2": {
+  "model": "em2.yaml",
+  "objective": 23572.6072427726,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "em3": {
+  "model": "em3.yaml",
+  "objective": 26815.8144872895,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "flex1": {
+  "model": "flex1.yaml",
+  "objective": 45897.8640753771,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz0": {
+  "model": "fz0.yaml",
+  "objective": 83735.2056781583,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz117": {
+  "model": "fz117.yaml",
+  "objective": 29710.4408899849,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz12": {
+  "model": "fz12.yaml",
+  "objective": 36803.978382599,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz133": {
+  "model": "fz133.yaml",
+  "objective": 47380.0020442469,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz14": {
+  "model": "fz14.yaml",
+  "objective": 120480.17952689,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz15": {
+  "model": "fz15.yaml",
+  "objective": 50334.8885752522,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz183": {
+  "model": "fz183.yaml",
+  "objective": 53885.7802383724,
+  "qa_passed": false,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz2": {
+  "model": "fz2.yaml",
+  "objective": 21416.8101651922,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz22": {
+  "model": "fz22.yaml",
+  "objective": 15913.7291742438,
+  "qa_passed": false,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz24": {
+  "model": "fz24.yaml",
+  "objective": 38035.5329918382,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz26": {
+  "model": "fz26.yaml",
+  "objective": 73809.3708449031,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz291": {
+  "model": "fz291.yaml",
+  "objective": 105271.863818895,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz33": {
+  "model": "fz33.yaml",
+  "objective": 70370.0294741144,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz50": {
+  "model": "fz50.yaml",
+  "objective": 45970.9577553431,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz78": {
+  "model": "fz78.yaml",
+  "objective": 65940.8049065237,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz83": {
+  "model": "fz83.yaml",
+  "objective": 31655.5189269859,
+  "qa_passed": false,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz87": {
+  "model": "fz87.yaml",
+  "objective": 122360.676440664,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "fz99": {
+  "model": "fz99.yaml",
+  "objective": 42815.7480537612,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "lv1": {
+  "model": "lv1.yaml",
+  "objective": 57734.6527994761,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "lv2": {
+  "model": "lv2.yaml",
+  "objective": 47947.1600401963,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "lv3": {
+  "model": "lv3.yaml",
+  "objective": 42468.0461319376,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "lv4": {
+  "model": "lv4.yaml",
+  "objective": 42436.9775297922,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "ma": {
+  "model": "ma.yaml",
+  "objective": 16111.9987131497,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mb": {
+  "model": "mb.yaml",
+  "objective": 24477.1265636466,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mb2": {
+  "model": "mb2.yaml",
+  "objective": 24692.1822546815,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mc": {
+  "model": "mc.yaml",
+  "objective": 21605.0311328183,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "md": {
+  "model": "md.yaml",
+  "objective": 24892.9135234921,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "me": {
+  "model": "me.yaml",
+  "objective": 25092.4191173398,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mf": {
+  "model": "mf.yaml",
+  "objective": 26859.6718759665,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mg": {
+  "model": "mg.yaml",
+  "objective": 22814.7850931627,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mh": {
+  "model": "mh.yaml",
+  "objective": 22737.5132629057,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mi": {
+  "model": "mi.yaml",
+  "objective": 28753.5897264564,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mi2": {
+  "model": "mi2.yaml",
+  "objective": 33121.8112223381,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mj": {
+  "model": "mj.yaml",
+  "objective": 21409.7122855913,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mr1": {
+  "model": "mr1.yaml",
+  "objective": 31056.7537904217,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "mr2": {
+  "model": "mr2.yaml",
+  "objective": 35616.0033128186,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "neg1": {
+  "model": "neg1.yaml",
+  "objective": 25182.6680934624,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "pk1": {
+  "model": "pk1.yaml",
+  "objective": 22786.0279174683,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "t3": {
+  "model": "t3.yaml",
+  "objective": 23325.7480575576,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "ts1": {
+  "model": "ts1.yaml",
+  "objective": 22777.4029743376,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "ts2": {
+  "model": "ts2.yaml",
+  "objective": 24784.792520984,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "uc1": {
+  "model": "uc1.yaml",
+  "objective": 23999.3694642695,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "uc2": {
+  "model": "uc2.yaml",
+  "objective": 26604.4759119347,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "vint1": {
+  "model": "vint1.yaml",
+  "objective": 22990.7962813505,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ },
+ "vr1": {
+  "model": "vr1.yaml",
+  "objective": 25404.9761957317,
+  "qa_passed": true,
+  "scenarios": [],
+  "times_version": "4.9.8"
+ }
+}

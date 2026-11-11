@@ -1,0 +1,73 @@
+
+plaintimes: 1
+name: flex1
+currency: MUSD
+discount_rate: 0.05
+regions: [R1]
+periods: {start: 2025, lengths: [5, 10, 10]}
+units: {energy: PJ, capacity: GW}
+
+commodities:
+  GAS: {kind: energy, unit: PJ}
+  COAL: {kind: energy, unit: PJ}
+  BIO: {kind: energy, unit: PJ}
+  OIL: {kind: energy, unit: PJ}
+  ELC: {kind: energy, unit: PJ}
+  HEAT: {kind: demand, unit: PJ, demand: {2025: 80, 2050: 100}}
+  POWER: {kind: demand, unit: PJ, demand: {2025: 60, 2050: 110}}
+  GSL: {kind: demand, unit: PJ, demand: {2025: 30, 2050: 25}}
+  DSL: {kind: demand, unit: PJ, demand: {2025: 40, 2050: 45}}
+  CO2: {kind: emission, unit: kt, cap: {2034: 12000, 2044: 6000}}
+emission_factors:
+  GAS: {CO2: 56.1}
+  COAL: {CO2: 94.6}
+  OIL: {CO2: 73.3}
+processes:
+  GAS_IMP: {outputs: [GAS], varom: {2025: 5, 2050: 7}}
+  COAL_IMP: {outputs: [COAL], varom: 2.5}
+  BIO_SUP: {outputs: [BIO], varom: 6, bounds: {activity: {max: {2025: 40, 2050: 60}}}}
+  OIL_IMP: {outputs: [OIL], varom: 9}
+  ELC_DIST: {inputs: [ELC], outputs: [POWER], efficiency: 0.95}
+  WIND: {outputs: [ELC], lifetime: 25, invcost: 1600, fixom: 35, availability: 0.33}
+  BOILER:
+    flexible_inputs:
+      COAL: {max_share: 0.6}
+      GAS: {efficiency: 0.9}
+      BIO: {efficiency: 0.75, max_share: 0.5, min_share: 0.1}
+    outputs: [HEAT]
+    efficiency: 0.8
+    lifetime: 20
+    invcost: 150
+    fixom: 4
+    availability: 0.9
+    capacity_unit: PJ/yr
+    emissions: combustion
+  CHP:
+    inputs: {GAS: 1}
+    outputs: {ELC: 1, HEAT: 1.2}
+    efficiency: 0.36
+    lifetime: 25
+    invcost: 1100
+    fixom: 30
+    availability: 0.8
+    emissions: combustion
+  GAS_PP:
+    inputs: [GAS]
+    outputs: [ELC]
+    efficiency: 0.55
+    lifetime: 30
+    invcost: 900
+    fixom: 20
+    availability: 0.9
+    emissions: combustion
+  REFINERY:
+    inputs: {OIL: 1.0, ELC: 0.01}
+    flexible_outputs:
+      GSL: {max_share: 0.5}
+      DSL: {max_share: 0.7, min_share: 0.3}
+    efficiency: 0.92
+    lifetime: 30
+    invcost: 60
+    fixom: 2
+    capacity_unit: PJ/yr
+    emissions: {CO2: {OIL: 5.0, activity: 1.5}}

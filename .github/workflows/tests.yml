@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -e ".[dev]"
+      # Includes the parity suite: the native kernel is checked against objective values
+      # recorded from the official ETSAP TIMES code (tests/parity/reference.json). No GAMS needed.
+      - run: pytest -q
+      - run: plaintimes test src/plaintimes/templates/demo

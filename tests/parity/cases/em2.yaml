@@ -1,0 +1,59 @@
+
+plaintimes: 1
+name: em2
+currency: MUSD
+discount_rate: 0.05
+regions: [R1]
+periods: {start: 2025, lengths: [5, 10, 10]}
+units: {energy: PJ, capacity: GW}
+
+timeslices:
+  W: {D: 0.30, N: 0.20}
+  S: {D: 0.28, N: 0.22}
+
+commodities:
+  GAS: {kind: energy, unit: PJ}
+  COAL: {kind: energy, unit: PJ}
+  ELC: {kind: energy, unit: PJ, timeslice: daynite}
+  LIGHT: {kind: demand, unit: PJ, timeslice: daynite, demand: {2025: 100, 2050: 150},
+          load_shape: {WD: 0.35, WN: 0.22, SD: 0.25, SN: 0.18}}
+  CO2: {kind: emission, unit: kt, budget: 220000}
+emission_factors:
+  GAS: {CO2: 56.1}
+  COAL: {CO2: 94.6}
+processes:
+  GAS_IMP: {outputs: [GAS], varom: {2025: 5, 2050: 7}}
+  COAL_IMP: {outputs: [COAL], varom: 2.5}
+  LAMP: {inputs: [ELC], outputs: [LIGHT]}
+  COAL_PP:
+    inputs: [COAL]
+    outputs: [ELC]
+    efficiency: 0.38
+    lifetime: 40
+    invcost: 1800
+    fixom: 40
+    varom: 0.6
+    availability: 0.85
+    existing: {1995: 1.5}
+    emissions: combustion
+  GAS_PP:
+    inputs: [GAS]
+    outputs: [ELC]
+    efficiency: {2025: 0.55, 2050: 0.60}
+    lifetime: 30
+    invcost: {2025: 900, 2050: 800}
+    fixom: 20
+    availability: 0.9
+    emissions: combustion
+  WIND:
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 1500, 2050: 1000}
+    fixom: 35
+    availability: {WD: 0.35, WN: 0.40, SD: 0.20, SN: 0.25}
+  SOLAR:
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 900, 2050: 500}
+    fixom: 12
+    availability: {W: 0.12, SN: 0.0, SD: 0.38}

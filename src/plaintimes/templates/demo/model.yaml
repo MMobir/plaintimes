@@ -1,0 +1,32 @@
+# A small national energy system: power, heat and car travel, 2025-2054.
+# Everything about the model is in this folder as plain text. Start here.
+plaintimes: 1
+name: demo
+description: >
+  Illustrative single-region model. Three fossil fuels, a power sector with
+  four timeslices, space heat and car travel. Numbers are plausible but
+  invented; replace them with sourced data before drawing conclusions.
+
+currency: MUSD        # million US dollars (so costs per PJ are USD/GJ)
+discount_rate: 0.05
+discount_year: 2025
+
+regions: [NORTH]
+
+# Period labels are the milestone years; boundaries fall halfway between them:
+#   2025: 2025-2027   2030: 2028-2035   2040: 2036-2045   2050: 2046-2054
+periods:
+  milestones: [2025, 2030, 2040, 2050]
+
+# Two seasons x day/night. Leaves are shares of the year and sum to 1.
+# Leaf names are season + part of day: WD, WN, SD, SN.
+timeslices:
+  W: {D: 0.25, N: 0.25}
+  S: {D: 0.29, N: 0.21}
+
+units: {energy: PJ, capacity: GW}
+
+include:
+  - commodities.yaml
+  - processes/*.yaml
+  - expect.yaml

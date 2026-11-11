@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+.venv/
+venv/
+
+# outputs of plaintimes itself
+runs/
+export/
+
+# local source archive and machine files
+/plaintimes-0.1.0.zip
+.DS_Store
+.env
+.env.*
+!.env.example

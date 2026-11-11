@@ -1,0 +1,28 @@
+processes:
+  CAR_ICE:
+    description: Internal-combustion cars
+    tags: [transport, fossil]
+    inputs: [OIL]
+    outputs: [MOBILITY]
+    efficiency: {2025: 0.40, 2050: 0.50}      # Bvkm per PJ (2.5 -> 2.0 MJ/km)
+    vintaged: true
+    capacity_unit: Bvkm/yr                    # the fleet's annual travel capability
+    lifetime: 15
+    invcost: 1700                             # MUSD per Bvkm/yr
+    fixom: 60
+    existing: {2012: 22, 2019: 40}
+    emissions: combustion
+
+  CAR_EV:
+    description: Battery-electric cars (charged evenly over the year)
+    tags: [transport]
+    inputs: [ELC]
+    outputs: [MOBILITY]
+    timeslice: annual
+    efficiency: {2025: 1.55, 2050: 1.80}      # Bvkm per PJ
+    capacity_unit: Bvkm/yr
+    lifetime: 15
+    invcost: {2025: 2300, 2035: 1800, 2050: 1650}
+    fixom: 45
+    bounds:
+      new_capacity: {max: {2025: 6}}          # supply chain limit in the first period

@@ -1,0 +1,16 @@
+# The model's own regression checks; run them with `plaintimes test <model>`.
+expect:
+  - name: reference case solves
+    status: optimal
+  - name: hydro stays at its existing 1.2 GW
+    table: capacity
+    where: {process: HYDRO, period: 2030}
+    equals: 1.2
+  - name: carbon cap is respected in 2050
+    scenarios: [carbon_cap]
+    table: emissions
+    where: {emission: CO2, period: 2050}
+    max: 6000
+  - name: carbon cap costs more than the reference
+    scenarios: [carbon_cap]
+    objective: {min: 345000}      # the reference case costs about 344,400

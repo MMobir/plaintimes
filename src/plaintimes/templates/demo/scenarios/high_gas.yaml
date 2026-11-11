@@ -1,0 +1,4 @@
+description: Gas prices 60% higher throughout.
+processes:
+  GAS_IMP:
+    varom: {2025: 11.2, 2050: 14.4}

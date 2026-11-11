@@ -1,0 +1,7 @@
+description: Joint cap on CO2 from both regions.
+constraints:
+  JOINT_CO2:
+    regions: sum
+    terms: [{emission: CO2, coef: 1}]
+    sense: "<="
+    rhs: {2040: 4000, 2050: 800}

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plaintimes"
+version = "0.1.0"
+description = "Plain-text, agent-native TIMES-style energy system models: YAML in, HiGHS LP out, optional .dd bridge to the official ETSAP TIMES code."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-or-later" }
+dependencies = ["pyyaml>=6", "numpy>=1.24", "highspy>=1.7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+plaintimes = "plaintimes.cli:main"
+pt = "plaintimes.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+plaintimes = ["templates/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

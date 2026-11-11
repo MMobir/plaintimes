@@ -1,0 +1,4 @@
+description: Carbon price rising to 150 USD/t in 2050.
+commodities:
+  CO2:
+    tax: {2025: 0.0, 2030: 0.05, 2050: 0.15}        # MUSD per kt = thousand USD per t

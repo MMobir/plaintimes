@@ -1,0 +1,107 @@
+# Two regions linked by a power line, with batteries.
+# Shows the two features that exist only in the native kernel so far:
+# trade links and storage (they are not exported to the official TIMES code yet).
+plaintimes: 1
+name: two_regions
+description: >
+  COAST has wind and gas, INLAND has sun and little else. A transmission line
+  and batteries let them share. Illustrative numbers.
+currency: MUSD
+discount_rate: 0.05
+regions: [COAST, INLAND]
+periods:
+  milestones: [2025, 2030, 2040, 2050]
+timeslices:
+  W: {D: 0.25, N: 0.25}
+  S: {D: 0.27, N: 0.23}
+units: {energy: PJ, capacity: GW}
+
+commodities:
+  GAS: {kind: energy}
+  ELC: {kind: energy, timeslice: daynite}
+  POWER:
+    kind: demand
+    timeslice: daynite
+    demand:
+      COAST:  {2025: 120, 2050: 150}
+      INLAND: {2025: 80, 2050: 140}
+    load_shape: {WD: 0.30, WN: 0.22, SD: 0.28, SN: 0.20}
+  CO2: {kind: emission, unit: kt}
+
+emission_factors:
+  GAS: {CO2: 56.1}
+
+processes:
+  GAS_IMP:
+    regions: [COAST]                 # only the coast has a gas terminal
+    outputs: [GAS]
+    varom: {2025: 7, 2050: 9}
+  GAS_CC:
+    regions: [COAST]
+    inputs: [GAS]
+    outputs: [ELC]
+    efficiency: 0.58
+    lifetime: 30
+    invcost: 1000
+    fixom: 22
+    availability: 0.9
+    existing: {2010: 5.0}
+    emissions: combustion
+  WIND:
+    regions: [COAST]
+    tags: [renewable]
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 1500, 2050: 1050}
+    fixom: 38
+    availability: {WD: 0.38, WN: 0.42, SD: 0.24, SN: 0.28}
+  SOLAR:
+    tags: [renewable]
+    outputs: [ELC]
+    lifetime: 25
+    invcost: {2025: 850, 2050: 480}
+    fixom: 14
+    availability:
+      COAST:  {WD: 0.14, WN: 0, SD: 0.34, SN: 0}
+      INLAND: {WD: 0.22, WN: 0, SD: 0.46, SN: 0}
+  GRID:
+    inputs: [ELC]
+    outputs: [POWER]
+    efficiency: 0.95
+
+storage:
+  BATTERY:
+    description: Lithium-ion batteries, 4 hours
+    commodity: ELC
+    cycle: season                    # charge and discharge balance within each season (daily cycling)
+    efficiency: 0.88
+    hours: 4
+    lifetime: 15
+    invcost: {2025: 1400, 2040: 800, 2050: 700}      # MUSD per GW of discharge power
+    fixom: 15
+
+trade:
+  COAST_INLAND:
+    description: Transmission line between the two regions
+    commodity: ELC
+    from: COAST
+    to: INLAND
+    bidirectional: true
+    efficiency: 0.96
+    lifetime: 50
+    invcost: 600                     # MUSD per GW
+    fixom: 6
+    existing: {2000: 1.0}
+
+expect:
+  - name: solves
+    status: optimal
+  - name: inland demand is met although it has no generation of its own at night
+    table: balance
+    where: {region: INLAND, commodity: POWER, period: 2050}
+    field: production
+    min: 139.99
+  - name: the line is expanded by 2050
+    table: capacity
+    where: {process: COAST_INLAND, period: 2050}
+    min: 1.0

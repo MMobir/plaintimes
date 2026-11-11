@@ -1,0 +1,187 @@
+plaintimes: 1
+name: fz2
+currency: MUSD
+discount_rate: 0.03
+regions:
+- R1
+units:
+  energy: PJ
+  capacity: GW
+periods:
+  start: 2025
+  lengths:
+  - 5
+  - 5
+timeslices:
+  W:
+    D: 0.3
+    N: 0.2
+  S:
+    D: 0.27
+    N: 0.23
+commodities:
+  GAS:
+    kind: energy
+  COAL:
+    kind: energy
+  CO2:
+    kind: emission
+    unit: kt
+  ELC:
+    kind: energy
+    timeslice: daynite
+  LIGHT:
+    kind: demand
+    demand:
+      2025: 130.367
+      2034: 100.907
+    timeslice: daynite
+    load_shape:
+      WD: 0.2747
+      WN: 0.1916
+      SD: 0.1886
+      SN: 0.3451
+  HEAT:
+    kind: demand
+    demand: 39.108
+emission_factors:
+  GAS:
+    CO2: 56.1
+  COAL:
+    CO2: 94.6
+processes:
+  GAS_IMP:
+    outputs:
+    - GAS
+    varom: 4.987
+  COAL_IMP:
+    outputs:
+    - COAL
+    varom: 2.461
+    bounds:
+      cumulative_activity:
+        max: 2889
+  LIGHT_BACKSTOP:
+    outputs:
+    - LIGHT
+    varom: 400
+  HEAT_BACKSTOP:
+    outputs:
+    - HEAT
+    varom: 300
+  GAS_PP:
+    outputs:
+    - ELC
+    lifetime: 30
+    invcost:
+      2025: 1219.383
+      2034: 1619.781
+    fixom:
+      2025: 38.048
+      2034: 39.33
+    tags:
+    - thermal
+    inputs:
+    - GAS
+    efficiency:
+      2025: 0.594
+      2034: 0.348
+    emissions: combustion
+    availability:
+      2025: 0.833
+      2034: 0.931
+    residual:
+      2025: 2.31
+      2036: 0
+  COAL_PP:
+    outputs:
+    - ELC
+    lifetime: 40
+    invcost:
+      2025: 2170.053
+      2034: 1732.692
+    fixom:
+      2025: 48.081
+      2034: 27.691
+    tags:
+    - thermal
+    inputs:
+    - COAL
+    efficiency:
+      2025: 0.485
+      2034: 0.519
+    emissions: combustion
+    availability: 0.9
+    capacity_factor: 0.65
+    existing:
+      1996: 0.36
+      2020: 0.29
+  WIND:
+    outputs:
+    - ELC
+    lifetime: 8
+    invcost: 2207.886
+    fixom:
+      2025: 21.21
+      2034: 24.031
+    tags:
+    - renewable
+    availability:
+      WD: 0.12
+      WN: 0.01
+      SD: 0.06
+      SN: 0.03
+    peak_contribution: 0.02
+    residual:
+      2025: 0.82
+      2030: 0
+    bounds:
+      capacity:
+        max:
+          2034: 8.3
+  SOLAR:
+    outputs:
+    - ELC
+    lifetime: 8
+    invcost: 802.84
+    fixom:
+      2025: 20.489
+      2034: 38.411
+      2026: 26.994
+    tags:
+    - renewable
+    availability:
+      WD: 0.15
+      WN: 0.28
+      SD: 0.3
+      SN: 0.02
+    peak_contribution: 0.11
+    economic_life: 7
+    hurdle_rate: 0.095
+    bounds:
+      new_capacity:
+        max: 4.2
+  LAMP:
+    inputs:
+    - ELC
+    outputs:
+    - LIGHT
+  HEATER:
+    inputs:
+    - ELC
+    outputs:
+    - HEAT
+    efficiency: 0.98
+    lifetime: 12
+    invcost: 120
+    capacity_unit: PJ/yr
+    timeslice: season
+constraints:
+  FLEET:
+    terms:
+    - capacity:
+      - GAS_PP
+      - COAL_PP
+      coef: 1
+    sense: <=
+    rhs: 8.69

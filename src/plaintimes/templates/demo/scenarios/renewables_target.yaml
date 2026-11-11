@@ -1,0 +1,10 @@
+description: Renewables must supply 70% of generation from 2040.
+constraints:
+  RENEWABLE_SHARE:
+    description: Renewable electricity as a share of all generation
+    terms:
+      - {flow: ELC, of: ["tag:renewable"], coef: 1}
+      - {production: ELC, coef: {2040: -0.70, 2050: -0.70}}
+    sense: ">="
+    rhs: 0
+    from: 2036
